@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webConfig>
+  <configs>
+    <modules>
+    
+     <module>
+        <name>getQueryCount</name>
+        <sql><![CDATA[ 
+        select count(*) from #{0} where  #{1}
+        ]]>
+        </sql>
+        <className>common</className>
+        <description>获取某张表或视图的条数</description>
+        <resultType>int</resultType>
+       </module>
+        <module>
+        <name>getQuerySet</name>
+        <sql><![CDATA[ 
+        select #{0} from #{1}   #{2}  
+        ]]>
+        </sql>
+        <className>common</className>
+        <description>获取某张表或视图的某一行，</description>支持任意条件
+        <resultType>array</resultType>
+       </module>
+       <module>
+        <name>getQueryRow</name>
+        <sql><![CDATA[ 
+        select #{0} from #{1} where #{2} and id=#{3}
+        ]]>
+        </sql>
+        <className>common</className>
+        <description>获取某张表或视图的某一行，只支持ID条件</description>
+        <resultType>array</resultType>
+       </module>
+       
+        <module>
+        <name>getQueryField</name>
+        <sql><![CDATA[ 
+        select  #{0} from #{1} where  #{2} limit 0,1
+        ]]>
+        </sql>
+        <className>common</className>
+        <description>获取某张表或视图的某个字段值，一定只有一行一列,统一返回string</description>
+        <resultType>string</resultType>
+       </module>
+       
+       
+        <module>
+        <name>updateField</name>
+        <sql><![CDATA[ 
+       		 update  #{0} set #{1} where #{2}
+        ]]>
+        </sql>
+        <className>common</className>
+        <description>更新某个字段</description>
+        <resultType>none</resultType>
+       </module>
+       
+        <module>
+        <name>execProc</name>
+        <sql><![CDATA[ 
+         call #{0}(#{1})
+        ]]>
+        </sql>
+        <className>common</className>
+        <description>执行存储过程 </description>
+        <resultType>none</resultType>
+       </module>
+   </modules>
+  </configs>
+</webConfig>

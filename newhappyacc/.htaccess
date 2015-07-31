@@ -1,0 +1,15 @@
+ <ifmodule mod_rewrite.c>
+    RewriteEngine On
+  
+   RewriteRule ^css/(.*)  /MVC/V/v1/css/$1
+   RewriteRule ^js/(.*)  /MVC/V/v1/js/$1
+  RewriteRule ^img/(.*)  /MVC/V/v1/img/$1
+  RewriteRule ^fonts/(.*)  /MVC/V/v1/fonts/$1
+  
+   
+    RewriteCond %{QUERY_STRING} ^(.*)
+    RewriteRule ^(\w{3,20})/(\w{3,20})/$ /index.php?control=$1&action=$2&%1
+     
+    RewriteCond %{QUERY_STRING} ^(.*)
+   RewriteRule ^service/(\w{2,18})/(\w{2,20})/$ /index.php?control=$1&action=$2&isservice=1&%1  
+  </ifmodule>

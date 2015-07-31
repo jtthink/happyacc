@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webConfig>
+  <configs>
+    <modules>
+    <module>
+        <name>getBooks</name>
+        <sql><![CDATA[ 
+           select *  from ha_book limit #{0},#{1}
+        ]]>
+        </sql>
+        <className>test</className>
+        <description>获取所有图书(classname必须和文件名相同)</description>
+        <resultType>array</resultType>
+       </module>
+       
+        <module>
+        <name>getNews</name>
+        <sql><![CDATA[ 
+           SELECT id,news_title,news_abstract FROM ha_news 
+           WHERE news_isremove=0 #{2} ORDER BY index_level desc,news_pubtime desc LIMIT #{0} offset #{1}
+        ]]>
+        </sql>
+        <className>test</className>
+        <description>获取测试新闻列表</description>
+        <resultType>array</resultType>
+       </module>
+      
+       </modules>
+       </configs>
+       </webConfig>
